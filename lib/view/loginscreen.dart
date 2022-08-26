@@ -12,9 +12,8 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        
         appBar: AppBar(
-           backgroundColor: Colors.brown,
+          backgroundColor: Colors.brown,
           title: const Text("login screen"),
         ),
         body: Padding(
@@ -40,41 +39,48 @@ class LoginScreen extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(
-                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.brown), ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.brown),
+                  ),
                   onPressed: () {
-                     if (nameController.text.isEmpty && passwordController.text.isEmpty){
+                    if (nameController.text.isEmpty &&
+                        passwordController.text.isEmpty) {
                       Get.snackbar(
-                          "Warning", "",messageText:const Text("Name and password is empty") ,colorText: Colors.white,
-                          snackPosition: SnackPosition.BOTTOM,
-                          isDismissible: true,
-                          duration:const Duration(
-                            seconds: 4,
-                          ),
-                          backgroundColor: Colors.red,
-                          forwardAnimationCurve:Curves.easeOutBack,
-                          );
-                    }
-                   else if (nameController.text == passwordController.text) {
+                        "Warning",
+                        "",
+                        messageText: const Text("Name and password is empty"),
+                        colorText: Colors.white,
+                        snackPosition: SnackPosition.BOTTOM,
+                        isDismissible: true,
+                        duration: const Duration(
+                          seconds: 4,
+                        ),
+                        backgroundColor: Colors.red,
+                        forwardAnimationCurve: Curves.easeOutBack,
+                      );
+                    } else if (nameController.text == passwordController.text) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) =>  HomeScreen()),
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
                       );
+                      nameController.clear();
+                      passwordController.clear();
                     } else {
-                       Get.snackbar(
-                          "Warning", "",messageText:const Text("Name and password is not matching") ,colorText: Colors.white,
-                          snackPosition: SnackPosition.BOTTOM,
-                          isDismissible: true,
-                          duration: Duration(
-                            seconds: 4,
-                          ),
-                          backgroundColor: Colors.red,
-                          forwardAnimationCurve:Curves.easeOutBack,
-                          );
-
+                      Get.snackbar(
+                        "Warning",
+                        "",
+                        messageText:
+                            const Text("Name and password is not matching"),
+                        colorText: Colors.white,
+                        snackPosition: SnackPosition.BOTTOM,
+                        isDismissible: true,
+                        duration: Duration(
+                          seconds: 4,
+                        ),
+                        backgroundColor: Colors.red,
+                        forwardAnimationCurve: Curves.easeOutBack,
+                      );
                     }
-                    nameController.clear();
-                    passwordController.clear();
                   },
                   child: const Text("login"))
             ],
